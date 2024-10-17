@@ -1,0 +1,262 @@
+@font-face {
+  font-family: "Mulish";
+  font-style: normal;
+  font-weight: 200 1000;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/mulish/v13/1Ptvg83HX_SGhgqk3wot.woff2)
+    format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: "Mulish", sans-serif;
+  /* footer support */
+  display: flex;
+  flex-direction: column;
+}
+
+/* footer support*/
+main {
+  flex: 1;
+}
+
+:root {
+  --background-col: #1f2937;
+  --header-col: #fff;
+  --body-col: rgb(250, 250, 250);
+  --link-col: #0060fc;
+  --drop-link-col: rgb(204, 0, 255);
+}
+
+/* HEADER */
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid black;
+  padding: 10px;
+  background-color: var(--background-col);
+  color: var(--header-col);
+}
+
+h1 {
+  color: var(--header-col);
+}
+
+button {
+  width: 45px;
+  height: 45px;
+  background-color: var(--background-col);
+}
+
+button:hover {
+  border: 1px solid var(--header-col);
+  cursor: pointer;
+}
+
+button i {
+  color: var(--header-col);
+}
+
+/* DROPDOWN */
+
+.drop-container {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  min-width: 150px;
+  background-color: var(--header-col);
+  border-bottom: 1px solid var(--background-col);
+}
+
+.dropdown-content a {
+  color: var(--link-col);
+  font-size: 20px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid var(--background-col);
+}
+
+.dropdown-content a:hover {
+  color: var(--drop-link-col);
+}
+
+/* note: chose to utilise a HOVER dropdown, therfore need CSS only. 
+   With click dropdown, add an event listener('click') in JS which will set .dropdown element display to "flex"
+*/
+
+.drop-container:hover .dropdown-content {
+  display: flex;
+}
+
+/* MAIN */
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  background: var(--body-col);
+  height: 100vh;
+}
+
+.dynamic-container {
+  padding: 10px;
+}
+
+.main-container p {
+  font-size: 16px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+#img-container {
+  height: 85vh;
+  padding: 10px;
+  width: 100vw;
+  margin: auto;
+  /* animation: fadeIn 10s; */
+}
+
+img {
+  display: block;
+  margin: auto;
+}
+
+/* CAROUSEL */
+
+.text-slideshow h1,
+.text-slideshow p {
+  color: black;
+  text-align: center;
+}
+
+.carousel-frame {
+  border: 1px solid var(--link-col);
+  max-width: 75vw;
+  max-height: 580px;
+  margin: auto;
+}
+
+.slideImages {
+  display: none;
+}
+
+.imageFade {
+  animation-name: imageFade;
+  animation-duration: 1.5s;
+}
+
+.alt-text {
+  color: #f2f2f2;
+  font-size: 16px;
+  padding: 8px 12px;
+  position: relative;
+  bottom: 45px;
+  width: 75vw;
+  text-align: center;
+}
+
+.numbertext {
+  color: white;
+  font-size: 14px;
+  padding: 8px 12px;
+  position: absolute; /* allocates it top left */
+}
+
+/* NAV CIRCLES */
+
+.navigation-images {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 35px;
+  place-content: center;
+}
+
+.navigation-images span {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-color: #bbb;
+  border-radius: 50%;
+}
+
+span.circle.selected {
+  background-color: #717171;
+}
+
+/* FOOTER */
+
+.footer {
+  background-color: var(--background-col);
+  color: var(--header-col);
+  text-align: center;
+  padding: 10px;
+}
+
+footer p {
+  text-align: center;
+  font-size: 20px;
+}
+
+.footer a {
+  text-decoration: none;
+  color: var(--header-col);
+}
+
+.footer a:hover {
+  color: var(--link-col);
+}
+
+/* keyframes to allow for fade in transition */
+/* keyframes act as var declaration for animation which then is transferrable */
+
+/* set class for each element permitting animation to occur as ID must remain unique */
+/* CSS styling for class => specify details of animation */
+
+.fade-in {
+  opacity: 1;
+  animation-name: fadeIn;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 3s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes imageFade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
